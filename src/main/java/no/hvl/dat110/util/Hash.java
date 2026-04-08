@@ -37,10 +37,10 @@ public class Hash {
 	
 	public static BigInteger addressSize() {
 		
-		BigInteger size = BigInteger.TWO;
+		BigInteger size = BigInteger.valueOf(2);
 		
 		for(int i = 0; i < bitSize()-1; i++) {
-			size = size.multiply(BigInteger.TWO);
+			size = size.multiply(BigInteger.valueOf(2));
 		}
 		
 		return size;
