@@ -105,7 +105,24 @@ public class FileManager {
 	public Set<Message> requestActiveNodesForFile(String filename) throws RemoteException {
 
 		this.filename = filename;
-		activeNodesforFile = new HashSet<Message>(); 
+		activeNodesforFile = new HashSet<Message>();
+
+		createReplicaFiles();
+
+		for (int i = 0; i < numReplicas; i++) {
+
+			BigInteger replica = replicafiles[i];
+
+			NodeInterface s = chordnode.findSuccessor(replica);
+
+			Message melding =  s.getFilesMetadata(replica);
+
+			if (melding != null) {
+				activeNodesforFile.add(melding);
+			}
+
+			return activeNodesforFile;
+		}
 
 		// Task: Given a filename, find all the peers that hold a copy of this file
 		
