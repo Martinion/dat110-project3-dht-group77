@@ -36,7 +36,7 @@ public class Util {
 	 * @param upper
 	 * @return true if (lower <= id <= upper) or false otherwise
 	 */
-	public static boolean checkInterval(BigInteger id, BigInteger lower, BigInteger upper) {
+	public static boolean checkInterval(BigInteger lower, BigInteger id, BigInteger upper) {
 
 		if(lower.compareTo(upper) < 0) {
 			if(lower.compareTo(id) <= 0 && id.compareTo(upper) <= 0)
