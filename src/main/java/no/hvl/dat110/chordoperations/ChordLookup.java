@@ -35,7 +35,7 @@ public class ChordLookup {
 		
 		NodeInterface successor = node.getSuccessor();
 		
-		if(Util.checkInterval(node.getNodeID().add(BigInteger.ONE), key, successor.getNodeID()))
+		if(Util.checkInterval(key, node.getNodeID().add(BigInteger.ONE), successor.getNodeID()))
 			return successor;
 		else
 			return findHighestPredecessor(node.getNodeID()).findSuccessor(key);				
@@ -52,7 +52,7 @@ public class ChordLookup {
 		List<NodeInterface> fingerTable = node.getFingerTable();
 		
 		for(NodeInterface finger : fingerTable) {
-			if(Util.checkInterval(node.getNodeID().add(BigInteger.ONE), finger.getNodeID(), ID.subtract(BigInteger.ONE)))
+			if(Util.checkInterval(finger.getNodeID(), node.getNodeID().add(BigInteger.ONE), ID.subtract(BigInteger.ONE)))
 				return finger;
 		}
 		
