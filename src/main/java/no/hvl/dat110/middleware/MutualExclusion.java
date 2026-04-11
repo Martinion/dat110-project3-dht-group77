@@ -117,7 +117,7 @@ public class MutualExclusion {
 		node.getMessage().setClock(clock.getClock());
 		
 		// if message is from self, acknowledge, and call onMutexAcknowledgementReceived()
-		if(message.getNodeID().equals(node.getNodeID())) {
+		if(message.getNodeID().equals(node.getNodeID())) { // Endret til å heller matche mot ID for å hinde race condition
 			message.setAcknowledged(true);
 			onMutexAcknowledgementReceived(message);
 			return;
